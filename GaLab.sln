@@ -1,0 +1,51 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GaLab.Shared", "GaLab.Shared\GaLab.Shared.csproj", "{0A6025F8-1068-4A88-A763-9CB13D3924CF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GaLab.Service", "GaLab.Service\GaLab.Service.csproj", "{34D0D5D3-DBD8-42B5-B1E6-4E3D902718E9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GaLab.Manager", "GaLab.Manager\GaLab.Manager.csproj", "{5D94CA9C-52D1-4AB0-8B2F-942F42187615}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GaLab.Tests", "GaLab.Tests\GaLab.Tests.csproj", "{7B891025-4E66-46D9-978B-A6F35B870AE9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TspLibrary", "TspLibrary\TspLibrary.csproj", "{8D1FE4E2-5DDA-46C3-9410-3F8B34C9E892}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GaLab.Service2", "GaLab.Service2\GaLab.Service2.csproj", "{7FB81A33-B2E8-4C40-A29C-0A2E14FB92F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A6025F8-1068-4A88-A763-9CB13D3924CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A6025F8-1068-4A88-A763-9CB13D3924CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A6025F8-1068-4A88-A763-9CB13D3924CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A6025F8-1068-4A88-A763-9CB13D3924CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34D0D5D3-DBD8-42B5-B1E6-4E3D902718E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34D0D5D3-DBD8-42B5-B1E6-4E3D902718E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34D0D5D3-DBD8-42B5-B1E6-4E3D902718E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34D0D5D3-DBD8-42B5-B1E6-4E3D902718E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D94CA9C-52D1-4AB0-8B2F-942F42187615}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D94CA9C-52D1-4AB0-8B2F-942F42187615}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D94CA9C-52D1-4AB0-8B2F-942F42187615}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D94CA9C-52D1-4AB0-8B2F-942F42187615}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B891025-4E66-46D9-978B-A6F35B870AE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B891025-4E66-46D9-978B-A6F35B870AE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B891025-4E66-46D9-978B-A6F35B870AE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B891025-4E66-46D9-978B-A6F35B870AE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D1FE4E2-5DDA-46C3-9410-3F8B34C9E892}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D1FE4E2-5DDA-46C3-9410-3F8B34C9E892}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D1FE4E2-5DDA-46C3-9410-3F8B34C9E892}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D1FE4E2-5DDA-46C3-9410-3F8B34C9E892}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FB81A33-B2E8-4C40-A29C-0A2E14FB92F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FB81A33-B2E8-4C40-A29C-0A2E14FB92F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FB81A33-B2E8-4C40-A29C-0A2E14FB92F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FB81A33-B2E8-4C40-A29C-0A2E14FB92F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

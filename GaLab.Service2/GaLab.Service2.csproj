@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../GaLab.Shared/GaLab.Shared.csproj" />
+    <ProjectReference Include="../TspLibrary/TspLibrary.csproj" />
+    <Compile Include="../GaLab.Service/Program.cs" Link="Program.cs" />
+    <Compile Include="../GaLab.Service/TspServiceSolver.cs" Link="TspServiceSolver.cs" />
+    <Compile Include="../GaLab.Service/ServiceExecution.cs" Link="ServiceExecution.cs" />
+  </ItemGroup>
+</Project>

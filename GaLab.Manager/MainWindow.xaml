@@ -1,0 +1,88 @@
+<Window x:Class="GaLab.Manager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Лабораторная №2 — распределённый коммивояжёр"
+        Width="1120" Height="900" MinWidth="900" MinHeight="760"
+        FontFamily="Segoe UI" FontSize="14"
+        WindowStartupLocation="CenterScreen"
+        Closing="Window_Closing" Closed="Window_Closed">
+  <Grid Margin="12">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="165"/>
+      <RowDefinition Height="100"/>
+      <RowDefinition Height="110"/>
+    </Grid.RowDefinitions>
+    <Border Grid.Row="0" BorderBrush="LightGray" BorderThickness="1" Background="White" Padding="12" Margin="0,0,0,9">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="320"/>
+          <ColumnDefinition Width="12"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+          <Label Content="Адреса сервисов (по одному в строке):" Padding="0,0,0,5"/>
+          <TextBox x:Name="ServiceUrlsBox" Text="http://localhost:5001&#x0a;http://localhost:5002"
+                   AcceptsReturn="True" Height="118" Padding="6" VerticalScrollBarVisibility="Auto"/>
+        </StackPanel>
+        <StackPanel Grid.Column="2" Orientation="Vertical">
+          <WrapPanel Margin="0,0,0,8">
+            <StackPanel Orientation="Horizontal" Margin="0,0,14,6">
+              <Label Content="Города:"/><TextBox x:Name="CitiesBox" Text="14" Width="65" Padding="5,3"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,14,6">
+              <Label Content="Популяция:"/><TextBox x:Name="PopulationBox" Text="200" Width="75" Padding="5,3"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,14,6">
+              <Label Content="Поколения:"/><TextBox x:Name="GenerationsBox" Text="500" Width="75" Padding="5,3"/>
+            </StackPanel>
+          </WrapPanel>
+          <WrapPanel Margin="0,0,0,8">
+            <StackPanel Orientation="Horizontal" Margin="0,0,14,6">
+              <Label Content="Мутация:"/><TextBox x:Name="MutationRateBox" Text="0.2" Width="70" Padding="5,3"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,14,6">
+              <Label Content="Seed городов:"/><TextBox x:Name="CitySeedBox" Text="123" Width="75" Padding="5,3"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,14,6">
+              <Label Content="Seed ГА:"/><TextBox x:Name="AlgorithmSeedBox" Text="42" Width="75" Padding="5,3"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,14,6">
+              <Label Content="Заданий/сервис:"/>
+              <TextBox x:Name="JobsPerServiceBox" Text="1" Width="55" Padding="5,3"
+                       ToolTip="1 сохраняет разбиение исходного алгоритма; большее значение создаёт дополнительные независимые поиски."/>
+            </StackPanel>
+          </WrapPanel>
+          <WrapPanel>
+            <Button x:Name="StartButton" Content="Запуск" Padding="20,6" Margin="0,0,8,0"
+                    IsDefault="True" Click="StartButton_Click"/>
+            <Button x:Name="StopButton" Content="Остановить" Padding="20,6" Margin="0,0,8,0"
+                    IsEnabled="False" Click="StopButton_Click"/>
+            <Button x:Name="ApplyServicesButton" Content="Применить сервисы" Padding="12,6"
+                    IsEnabled="False" Click="ApplyServicesButton_Click"/>
+          </WrapPanel>
+        </StackPanel>
+      </Grid>
+    </Border>
+    <TextBlock x:Name="StatusText" Grid.Row="1" TextWrapping="Wrap" Margin="0,0,0,9"
+               Text="Укажите сервисы и параметры TSP, затем нажмите «Запуск»."/>
+    <GroupBox Grid.Row="2" Header="Лучший маршрут и расстояния" Margin="0,0,0,9">
+      <TextBox x:Name="ResultBox" IsReadOnly="True" AcceptsReturn="True" TextWrapping="Wrap"
+               Padding="8" VerticalScrollBarVisibility="Auto"/>
+    </GroupBox>
+    <GroupBox Grid.Row="3" Header="Лучшие расстояния последних 60 поколений (сервис-победитель)"
+              Margin="0,0,0,9">
+      <Canvas x:Name="GraphCanvas" Background="#FAFCFF" SizeChanged="GraphCanvas_SizeChanged"/>
+    </GroupBox>
+    <GroupBox Grid.Row="4" Header="Состояние вычислительных сервисов" Margin="0,0,0,9">
+      <TextBox x:Name="ServicesBox" IsReadOnly="True" TextWrapping="Wrap"
+               Padding="8" VerticalScrollBarVisibility="Auto" Text="Сервисы пока не опрошены."/>
+    </GroupBox>
+    <GroupBox Grid.Row="5" Header="Предупреждения сервисов">
+      <TextBox x:Name="WarningsBox" IsReadOnly="True" AcceptsReturn="True" TextWrapping="Wrap"
+               Padding="8" VerticalScrollBarVisibility="Auto" Text="Предупреждений нет."/>
+    </GroupBox>
+  </Grid>
+</Window>
