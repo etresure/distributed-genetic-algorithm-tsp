@@ -18,55 +18,6 @@ public sealed partial class GaManagerClient
 
     public IReadOnlyList<string> LastWarnings { get; private set; } = [];
 
-    public async Task<SolveResponse> SolveAsync(
-        IReadOnlyList<string> serviceUrls,
-        SolveRequest baseRequest,
-        CancellationToken cancellationToken)
-    {
-        ArgumentNullException.ThrowIfNull(serviceUrls);
-        ValidateRequest(baseRequest);
-
-        var warnings = new List<string>();
-        var urls = ParseServiceUrls(serviceUrls, warnings);
-        LastWarnings = [.. warnings];
-        if (urls.Count == 0)
-            throw new InvalidOperationException("Не указано ни одного корректного адреса вычислительного сервиса.");
-
-        // TspSolver requires >=2 individuals per independent run. Do not send size=1.
-        int usedServices = Math.Min(urls.Count, baseRequest.PopulationSize / 2);
-        if (usedServices < urls.Count)
-            warnings.Add($"Использовано {usedServices} сервис(ов) из {urls.Count}: каждому нужно минимум 2 особи.");
-        int share = baseRequest.PopulationSize / usedServices;
-        int remainder = baseRequest.PopulationSize % usedServices;
-
-        var tasks = new List<Task<ServiceCallResult>>(usedServices);
-        for (int i = 0; i < usedServices; i++)
-        {
-            var taskRequest = baseRequest with
-            {
-                PopulationSize = share + (i < remainder ? 1 : 0),
-                Seed = baseRequest.Seed.HasValue ? unchecked(baseRequest.Seed.Value + i) : null
-            };
-            tasks.Add(communication.SolveAsync(urls[i], taskRequest, i, cancellationToken));
-        }
-
-        ServiceCallResult[] results = await Task.WhenAll(tasks);
-        cancellationToken.ThrowIfCancellationRequested();
-        foreach (ServiceCallResult result in results.OrderBy(result => result.Index))
-            if (result.Warning is not null)
-                warnings.Add(result.Warning);
-        LastWarnings = [.. warnings];
-
-        SolveResponse? best = results
-            .Where(result => result.Response is not null)
-            .Select(result => result.Response!)
-            .OrderBy(result => result.Length)
-            .FirstOrDefault();
-
-        return best ?? throw new InvalidOperationException(
-            "Все сервисы недоступны или вернули ошибку. Проверьте их адреса и запустите хотя бы один сервис.");
-    }
-
     private static void ValidateRequest(SolveRequest baseRequest)
     {
         ArgumentNullException.ThrowIfNull(baseRequest);
